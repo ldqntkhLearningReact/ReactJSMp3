@@ -10,14 +10,23 @@ var config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
-  module : {
-    loaders : [
-      {
-        test : /\.jsx?/,
-        include : APP_DIR,
-        loader : 'babel-loader'
+  resolve : {
+      alias : {
+          reducer : path.resolve(__dirname, 'App/reducers/indexReducer.js')
       }
-    ]
+  },
+  module: {
+      loaders : [
+          {
+              loader : 'babel-loader',
+              test : /\.jsx?$/,
+              exclude : /node_modules/,
+              query:
+              {
+                  presets:['react']
+              }
+          }
+      ]
   }
 };
  
